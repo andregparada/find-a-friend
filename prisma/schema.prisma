@@ -50,7 +50,7 @@ enum Environment {
   SPACIOUS
 }
 
-model ORG {
+model Org {
   id            String   @id @default(uuid())
   name          String
   email         String   @unique
@@ -66,6 +66,8 @@ model ORG {
 
   latitude  Decimal
   longitude Decimal
+
+  pets Pet[]
 
   @@map("orgs")
 }
@@ -86,6 +88,9 @@ model Pet {
   environment_needs  Environment
 
   adoption_requirements String[]
+
+  org   Org    @relation(fields: [org_id], references: [id])
+  org_id String
 
   @@map("pets")
 }
