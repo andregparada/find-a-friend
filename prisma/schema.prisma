@@ -13,16 +13,79 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  ADMIN
-  MEMBER
+enum Sex {
+  MALE
+  FEMALE
 }
 
-model User {
+enum Age {
+  PUPPY
+  ADULT
+  SENIOR
+}
+
+enum Size {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+enum EnergyLevel {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
+enum IndependenceLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum Environment {
+  SMALL
+  MEDIUM
+  SPACIOUS
+}
+
+model ORG {
   id            String   @id @default(uuid())
   name          String
   email         String   @unique
   password_hash String
-  role          Role     @default(MEMBER)
+  phone_number  String
   created_at    DateTime @default(now())
+
+  cep          String
+  state        String
+  city         String
+  neighborhood String
+  street       String
+
+  latitude  Decimal
+  longitude Decimal
+
+  @@map("orgs")
+}
+
+model Pet {
+  id      String   @id @default(uuid())
+  species String
+  race    String
+  sex     Sex
+  color   String[]
+
+  name               String
+  caracteristics     String
+  age                Age
+  size               Size
+  energy_level       EnergyLevel
+  independence_level IndependenceLevel
+  environment_needs  Environment
+
+  adoption_requirements String[]
+
+  @@map("pets")
 }
