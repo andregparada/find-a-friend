@@ -69,6 +69,10 @@ export class InMemoryOrgsRepository implements OrgsRepository {
     return updatedOrg
   }
 
+  async delete(id: string) {
+    this.items.filter((item) => item.id === id)
+  }
+
   async findById(id: string) {
     const org = this.items.find((item) => item.id === id)
 
