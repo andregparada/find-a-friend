@@ -57,6 +57,7 @@ export class UpdateOrgUseCase {
     }
 
     const updatedOrg = await this.orgsRepository.update({
+      id: orgId,
       name: name || org.name,
       email: email || org.email,
       password_hash: password_hash || org.password_hash,
