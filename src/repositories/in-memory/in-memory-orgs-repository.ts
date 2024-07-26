@@ -29,6 +29,7 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
   async update(data: Prisma.OrgUpdateInput) {
     const org = this.items.find((item) => item.id === data.id)
+    const orgIndex = this.items.findIndex((item) => item.id === data.id)
 
     if (!org) {
       throw new Error()
@@ -63,14 +64,13 @@ export class InMemoryOrgsRepository implements OrgsRepository {
       longitude: new Prisma.Decimal(data.longitude.toString()) || org.longitude,
     }
 
-    this.items.filter((item) => item.id === data.id)
-    this.items.push(updatedOrg)
+    this.items[orgIndex] = updatedOrg
 
     return updatedOrg
   }
 
   async delete(id: string) {
-    this.items.filter((item) => item.id === id)
+    this.items = this.items.filter((item) => item.id !== id)
   }
 
   async findById(id: string) {
