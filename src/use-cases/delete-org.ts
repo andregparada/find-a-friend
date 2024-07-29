@@ -1,5 +1,5 @@
 import { OrgsRepository } from '@/repositories/orgs-repository'
-import { OrgNotFoundError } from './errors/org-already-exists-error copy'
+import { OrgNotFoundError } from './errors/org-not-found-error'
 
 interface DeleteOrgUseCaseRequest {
   orgId: string
