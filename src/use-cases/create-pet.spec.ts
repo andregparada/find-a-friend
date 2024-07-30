@@ -3,7 +3,7 @@ import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-
 import { hash } from 'bcryptjs'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { CreatePetUseCase } from './create-pet'
-import { OrgNotFoundError } from './errors/org-not-found-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let orgsRepository: InMemoryOrgsRepository
 let petsRepository: InMemoryPetsRepository
@@ -66,6 +66,6 @@ describe('Create Pet Use Case', () => {
         environment_needs: 'SMALL',
         adoption_requirements: ['None'],
       }),
-    ).rejects.toBeInstanceOf(OrgNotFoundError)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })
