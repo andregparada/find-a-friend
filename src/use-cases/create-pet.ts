@@ -100,7 +100,7 @@ export class CreatePetUseCase {
       independence_level,
       environment_needs,
       adoption_requirements,
-      org,
+      org_id: orgId,
     })
 
     return { pet }
