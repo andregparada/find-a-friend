@@ -1,5 +1,5 @@
 import { OrgsRepository } from '@/repositories/orgs-repository'
-import { OrgNotFoundError } from './errors/org-not-found-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface DeleteOrgUseCaseRequest {
   orgId: string
@@ -12,7 +12,7 @@ export class DeleteOrgUseCase {
     const org = await this.orgsRepository.findById(orgId)
 
     if (!org) {
-      throw new OrgNotFoundError()
+      throw new ResourceNotFoundError()
     }
 
     await this.orgsRepository.delete(orgId)
