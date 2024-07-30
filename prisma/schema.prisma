@@ -80,7 +80,7 @@ model Pet {
   color   String[]
 
   name               String
-  caracteristics     String
+  characteristics     String
   age                Age
   size               Size
   energy_level       EnergyLevel

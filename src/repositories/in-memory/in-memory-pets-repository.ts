@@ -19,7 +19,7 @@ export class InMemoryPetsRepository implements PetsRepository {
       sex: data.sex,
       color,
       name: data.name,
-      caracteristics: data.caracteristics,
+      characteristics: data.characteristics,
       age: data.age,
       size: data.size,
       energy_level: data.energy_level,
@@ -33,13 +33,13 @@ export class InMemoryPetsRepository implements PetsRepository {
 
     if (
       !data.energy_level ||
-      data.independence_level ||
-      data.size ||
-      data.sex ||
-      data.environment_needs ||
-      data.age ||
-      data.color ||
-      data.adoption_requirements
+      !data.independence_level ||
+      !data.size ||
+      !data.sex ||
+      !data.environment_needs ||
+      !data.age ||
+      !data.color ||
+      !data.adoption_requirements
     ) {
       throw new Error()
     }

@@ -3,42 +3,12 @@ import { PetsRepository } from '@/repositories/pets-repository'
 import { Pet } from '@prisma/client'
 import { OrgNotFoundError } from './errors/org-not-found-error'
 
-enum Sex {
-  MALE = 'MALE',
-  FEMALE = 'FEMALE',
-}
-
-enum Age {
-  PUPPY = 'PUPPY',
-  ADULT = 'ADULT',
-  SENIOR = 'SENIOR',
-}
-
-enum Size {
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  LARGE = 'LARGE',
-}
-
-enum EnergyLevel {
-  ONE = 'ONE',
-  TWO = 'TWO',
-  THREE = 'THREE',
-  FOUR = 'FOUR',
-  FIVE = 'FIVE',
-}
-
-enum IndependenceLevel {
-  LOW = 'LOW',
-  MEDIUM = 'MEDIUM',
-  HIGH = 'HIGH',
-}
-
-enum Environment {
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  SPACIOUS = 'SPACIOUS',
-}
+type Sex = 'MALE' | 'FEMALE'
+type Age = 'PUPPY' | 'ADULT' | 'SENIOR'
+type Size = 'SMALL' | 'MEDIUM' | 'LARGE'
+type EnergyLevel = 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE'
+type IndependenceLevel = 'LOW' | 'MEDIUM' | 'HIGH'
+type Environment = 'SMALL' | 'MEDIUM' | 'SPACIOUS'
 
 interface CreatePetUseCaseRequest {
   orgId: string
@@ -52,7 +22,7 @@ interface CreatePetUseCaseRequest {
   environment_needs: Environment
   race: string
   color: string[]
-  caracteristics: string
+  characteristics: string
   adoption_requirements: string[]
 }
 
@@ -73,7 +43,7 @@ export class CreatePetUseCase {
     race,
     sex,
     color,
-    caracteristics,
+    characteristics,
     age,
     size,
     energy_level,
@@ -93,7 +63,7 @@ export class CreatePetUseCase {
       race,
       sex,
       color,
-      caracteristics,
+      characteristics,
       age,
       size,
       energy_level,
