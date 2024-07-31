@@ -35,6 +35,8 @@ describe('Get Pet Profile Use Case', () => {
 
     expect(pet.id).toEqual(expect.any(String))
     expect(pet.name).toEqual('Pet John Doe')
+    expect(pet.color).toEqual(['Orange'])
+    expect(pet.age).toEqual('PUPPY')
   })
 
   it('should not be able to get pet profile with wrong id', async () => {

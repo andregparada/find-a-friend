@@ -2,7 +2,7 @@ import { OrgsRepository } from '@/repositories/orgs-repository'
 import { Org } from '@prisma/client'
 import { hash } from 'bcryptjs'
 import { OrgAlreadyExistsError } from './errors/org-already-exists-error'
-import { OrgNotFoundError } from './errors/org-not-found-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface UpdateOrgUseCaseRequest {
   orgId: string
@@ -43,7 +43,7 @@ export class UpdateOrgUseCase {
     const org = await this.orgsRepository.findById(orgId)
 
     if (!org) {
-      throw new OrgNotFoundError()
+      throw new ResourceNotFoundError()
     }
 
     const password_hash = password ? await hash(password, 6) : org.password_hash

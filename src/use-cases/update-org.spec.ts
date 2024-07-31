@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
 import { hash } from 'bcryptjs'
 import { UpdateOrgUseCase } from './update-org'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { OrgAlreadyExistsError } from './errors/org-already-exists-error'
 
 let orgsRepository: InMemoryOrgsRepository
 let sut: UpdateOrgUseCase
@@ -78,6 +78,6 @@ describe('Update Org Use Case', () => {
         orgId: org.id,
         email,
       }),
-    ).rejects.toBeInstanceOf(ResourceNotFoundError)
+    ).rejects.toBeInstanceOf(OrgAlreadyExistsError)
   })
 })
