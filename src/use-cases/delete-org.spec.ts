@@ -30,7 +30,6 @@ describe('Delete Org Use Case', () => {
     await sut.execute({ orgId: org.id })
 
     const deletedOrg = await orgsRepository.findById(org.id)
-    console.log(deletedOrg)
 
     await expect(deletedOrg).toBeNull()
   })
