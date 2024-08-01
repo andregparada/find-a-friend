@@ -6,4 +6,5 @@ export interface OrgsRepository {
   delete(id: string): void
   findById(id: string): Promise<Org | null>
   findByEmail(email: string): Promise<Org | null>
+  findManyByCity(city: string): Promise<Org[]>
 }

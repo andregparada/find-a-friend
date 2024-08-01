@@ -57,4 +57,16 @@ export class InMemoryPetsRepository implements PetsRepository {
 
     return pet
   }
+
+  async findByOrgId(id: string) {
+    const pets = this.items.filter((item) => item.org_id === id)
+
+    return pets
+  }
+
+  async findManyByOrgId(orgId: string, page: number) {
+    return this.items
+      .filter((item) => item.org_id === orgId)
+      .slice((page - 1) * 20, page * 20)
+  }
 }
