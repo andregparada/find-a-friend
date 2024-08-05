@@ -57,7 +57,13 @@ export class PrismaOrgsRepository implements OrgsRepository {
     return org
   }
 
-  async findManyByCity(city: string): Promise<Org[]> {
-    throw new Error('Method not implemented.')
+  async findManyByCity(city: string) {
+    const orgs = await prisma.org.findMany({
+      where: {
+        city,
+      },
+    })
+
+    return orgs
   }
 }
