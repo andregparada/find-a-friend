@@ -29,8 +29,12 @@ export class PrismaOrgsRepository implements OrgsRepository {
     return org
   }
 
-  async delete(id: string): void {
-    throw new Error('Method not implemented.')
+  async delete(id: string) {
+    await prisma.org.delete({
+      where: {
+        id,
+      },
+    })
   }
 
   async findById(id: string): Promise<Org | null> {
