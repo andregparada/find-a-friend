@@ -1,6 +1,7 @@
 import { Prisma, Org } from '@prisma/client'
 import { OrgsRepository } from '../orgs-repository'
 import { prisma } from '@/lib/prisma'
+import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 
 export class PrismaOrgsRepository implements OrgsRepository {
   async create(data: Prisma.OrgCreateInput) {
@@ -11,8 +12,21 @@ export class PrismaOrgsRepository implements OrgsRepository {
     return org
   }
 
-  async update(data: Prisma.OrgUpdateInput): Promise<Org> {
-    throw new Error('Method not implemented.')
+  async update(data: Prisma.OrgUpdateInput) {
+    if (!data.id) {
+      throw new ResourceNotFoundError()
+    }
+
+    const id = data.id.toString()
+
+    const org = await prisma.org.update({
+      where: {
+        id,
+      },
+      data,
+    })
+
+    return org
   }
 
   async delete(id: string): void {
