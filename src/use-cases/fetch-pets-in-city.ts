@@ -51,8 +51,6 @@ export class FetchPetsInCityUseCase {
 
     pets = allPets.flat()
 
-    console.log('Before filtering:', pets)
-
     if (age) {
       pets = pets.filter((pet) => pet.age === age)
     }

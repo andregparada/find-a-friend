@@ -1,4 +1,4 @@
-import { Prisma, Pet } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { PetsRepository } from '../pets-repository'
 import { prisma } from '@/lib/prisma'
 
@@ -12,10 +12,24 @@ export class PrismaPetsRepository implements PetsRepository {
   }
 
   async findById(id: string) {
-    throw new Error('Method not implemented.')
+    const pet = await prisma.pet.findUnique({
+      where: {
+        id,
+      },
+    })
+
+    return pet
   }
 
   async findManyByOrgId(orgId: string, page: number) {
-    throw new Error('Method not implemented.')
+    const pets = await prisma.pet.findMany({
+      where: {
+        org_id: orgId,
+      },
+      take: 20,
+      skip: (page - 1) * 20,
+    })
+
+    return pets
   }
 }
