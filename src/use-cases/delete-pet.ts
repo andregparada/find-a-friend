@@ -5,7 +5,7 @@ interface DeleteOrgUseCaseRequest {
   id: string
 }
 
-export class DeleteOrgUseCase {
+export class DeletePetUseCase {
   constructor(private petsRepository: PetsRepository) {}
 
   async execute({ id }: DeleteOrgUseCaseRequest) {
@@ -15,6 +15,6 @@ export class DeleteOrgUseCase {
       throw new ResourceNotFoundError()
     }
 
-    await this.petsRepository.delete(pet)
+    await this.petsRepository.delete(id)
   }
 }
