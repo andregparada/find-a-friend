@@ -51,7 +51,7 @@ export class UpdateOrgUseCase {
     if (email) {
       const orgWithSameEmail = await this.orgsRepository.findByEmail(email)
 
-      if (orgWithSameEmail) {
+      if (orgWithSameEmail && orgWithSameEmail.email !== org.email) {
         throw new OrgAlreadyExistsError()
       }
     }
