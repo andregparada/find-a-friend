@@ -1,7 +1,7 @@
 import { makeDeleteOrgUseCase } from '@/use-cases/factories/make-delete-org-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 
-export async function update(request: FastifyRequest, reply: FastifyReply) {
+export async function deleteOrg(request: FastifyRequest, reply: FastifyReply) {
   const deleteOrg = makeDeleteOrgUseCase()
 
   await deleteOrg.execute({
