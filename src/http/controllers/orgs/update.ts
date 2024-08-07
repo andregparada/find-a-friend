@@ -41,9 +41,9 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
     longitude,
   } = updateBodySchema.parse(request.body)
 
-  const updateOrg = makeUpdateOrgUseCase()
+  const updateOrgUseCase = makeUpdateOrgUseCase()
 
-  const { updatedOrg } = await updateOrg.execute({
+  const { updatedOrg } = await updateOrgUseCase.execute({
     orgId: request.user.sub,
     name,
     email,
