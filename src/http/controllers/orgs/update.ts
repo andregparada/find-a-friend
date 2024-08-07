@@ -43,7 +43,7 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
 
   const updateOrgUseCase = makeUpdateOrgUseCase()
 
-  const { updatedOrg } = await updateOrgUseCase.execute({
+  await updateOrgUseCase.execute({
     orgId: request.user.sub,
     name,
     email,
@@ -58,7 +58,5 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
     longitude,
   })
 
-  return reply.status(200).send({
-    updatedOrg,
-  })
+  return reply.status(200).send()
 }

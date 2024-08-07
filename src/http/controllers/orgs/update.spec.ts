@@ -3,7 +3,7 @@ import { app } from '@/app'
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import { createAndAuthenticateOrg } from '@/utils/test/create-and-authenticate-org'
 
-describe('Update (e2e)', () => {
+describe('Update Org (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
   })
@@ -24,10 +24,5 @@ describe('Update (e2e)', () => {
       })
 
     expect(response.statusCode).toEqual(200)
-    expect(response.body.updatedOrg).toEqual(
-      expect.objectContaining({
-        name: 'Jane Doe',
-      }),
-    )
   })
 })

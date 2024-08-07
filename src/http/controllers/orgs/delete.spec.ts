@@ -3,7 +3,7 @@ import { app } from '@/app'
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import { createAndAuthenticateOrg } from '@/utils/test/create-and-authenticate-org'
 
-describe('Delete (e2e)', () => {
+describe('Delete Org (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
   })
