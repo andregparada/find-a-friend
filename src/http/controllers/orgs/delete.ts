@@ -3,29 +3,7 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 
 export async function update(request: FastifyRequest, reply: FastifyReply) {
-  const updateBodySchema = z.object({
-    name: z.string().optional(),
-    email: z.string().email().optional(),
-    password: z.string().min(6).optional(),
-    phone_number: z.string().optional(),
-    cep: z.string().optional(),
-    state: z.string().optional(),
-    city: z.string().optional(),
-    neighborhood: z.string().optional(),
-    street: z.string().optional(),
-    latitude: z.coerce
-      .number()
-      .refine((value) => {
-        return Math.abs(value) <= 90
-      })
-      .optional(),
-    longitude: z.coerce
-      .number()
-      .refine((value) => {
-        return Math.abs(value) <= 180
-      })
-      .optional(),
-  })
+  const deleteBodySchema = z.object({ orgId: z.string() })
 
   const {
     name,
@@ -39,7 +17,7 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
     street,
     latitude,
     longitude,
-  } = updateBodySchema.parse(request.body)
+  } = registerBodySchema.parse(request.body)
 
   const updateOrg = makeUpdateOrgUseCase()
 
