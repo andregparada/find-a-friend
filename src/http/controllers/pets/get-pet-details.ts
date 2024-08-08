@@ -14,7 +14,7 @@ export async function getPetDetails(
 
   const getPetProfileUseCase = makeGetPetProfileUseCase()
 
-  const pet = await getPetProfileUseCase.execute({
+  const { pet } = await getPetProfileUseCase.execute({
     petId,
   })
 
