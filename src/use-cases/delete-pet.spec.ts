@@ -28,7 +28,7 @@ describe('Delete Pet Use Case', () => {
       adoption_requirements: ['None'],
     })
 
-    await sut.execute({ id: pet.id })
+    await sut.execute({ petId: pet.id })
 
     const deletedPet = await petsRepository.findById(pet.id)
 

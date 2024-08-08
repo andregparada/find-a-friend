@@ -4,15 +4,15 @@ import { z } from 'zod'
 
 export async function deletePet(request: FastifyRequest, reply: FastifyReply) {
   const createPetParamSchema = z.object({
-    id: z.string().uuid(),
+    petId: z.string().uuid(),
   })
 
-  const { id } = createPetParamSchema.parse(request.params)
+  const { petId } = createPetParamSchema.parse(request.params)
 
   const deletePetUseCase = makeDeletePetUseCase()
 
   await deletePetUseCase.execute({
-    id,
+    petId,
   })
 
   return reply.status(204).send()

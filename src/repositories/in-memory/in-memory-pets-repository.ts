@@ -48,8 +48,8 @@ export class InMemoryPetsRepository implements PetsRepository {
     return pet
   }
 
-  async delete(id: string) {
-    this.items = this.items.filter((item) => item.id !== id)
+  async delete(petId: string) {
+    this.items = this.items.filter((item) => item.id !== petId)
   }
 
   async findById(id: string) {

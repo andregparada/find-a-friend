@@ -11,10 +11,10 @@ export class PrismaPetsRepository implements PetsRepository {
     return pet
   }
 
-  async delete(id: string) {
+  async delete(petId: string) {
     await prisma.pet.delete({
       where: {
-        id,
+        id: petId,
       },
     })
   }
