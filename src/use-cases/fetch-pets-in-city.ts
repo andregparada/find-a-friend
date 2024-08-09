@@ -11,10 +11,10 @@ type IndependenceLevel = 'LOW' | 'MEDIUM' | 'HIGH'
 interface FetchPetsInCityUseCaseRequest {
   city: string
   page: number
-  age?: Age | null
-  size?: Size | null
-  energy_level?: EnergyLevel | null
-  independence_level?: IndependenceLevel | null
+  age?: Age
+  size?: Size
+  energy_level?: EnergyLevel
+  independence_level?: IndependenceLevel
 }
 
 interface FetchPetsInCityUseCaseResponse {

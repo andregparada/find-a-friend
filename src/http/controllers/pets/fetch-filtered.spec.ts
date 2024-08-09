@@ -54,22 +54,20 @@ describe('Fetch Filtered Pets Details (e2e)', () => {
     const response = await request(app.server)
       .get('/pets/filter')
       .set('Authorization', `Bearer ${token}`)
-      .send({
+      .query({
         city: 'Example City',
         page: 1,
-        age: 'PUPPY',
-        energy_level: 'ONE',
-        size: 'SMALL',
-        independence_level: 'LOW',
       })
-
-    return console.log(response.body)
+      .send()
 
     expect(response.statusCode).toEqual(200)
-    // expect(response.body.pets).toEqual(
-    //   expect.objectContaining({
-    //     name: 'Pet John Doe',
-    //   }),
-    // )
+    expect(response.body.pets).toEqual([
+      expect.objectContaining({
+        name: 'Pet 1',
+      }),
+      expect.objectContaining({
+        name: 'Pet 2',
+      }),
+    ])
   })
 })
