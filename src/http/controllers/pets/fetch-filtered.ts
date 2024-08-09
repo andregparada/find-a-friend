@@ -2,14 +2,17 @@ import { makeFetchPetsInCityUseCase } from '@/use-cases/factories/make-fetch-pet
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 
-export async function filter(request: FastifyRequest, reply: FastifyReply) {
+export async function fetchFiltered(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const createPetBodySchema = z.object({
     city: z.string(),
-    page: z.number(),
-    age: z.enum(['PUPPY', 'ADULT', 'SENIOR']).optional(),
-    energy_level: z.enum(['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE']).optional(),
-    size: z.enum(['SMALL', 'MEDIUM', 'LARGE']).optional(),
-    independence_level: z.enum(['LOW', 'MEDIUM', 'HIGH']).optional(),
+    page: z.coerce.number(),
+    age: z.enum(['PUPPY', 'ADULT', 'SENIOR']).nullable(),
+    energy_level: z.enum(['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE']).nullable(),
+    size: z.enum(['SMALL', 'MEDIUM', 'LARGE']).nullable(),
+    independence_level: z.enum(['LOW', 'MEDIUM', 'HIGH']).nullable(),
   })
 
   const { city, page, age, energy_level, size, independence_level } =
